@@ -29,7 +29,7 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
     ```
     git clone https://github.com/determinedguy/ddp2-script-checker
     ```
-2. Isikan kredensial kamu di file `credentials.sh` (atau `credentials.sh`).
+2. Isikan kredensial kamu di file `credentials.sh` (atau `credentials.bat`).
 3. Jalankan program dan masukkan masukan sesuai dengan apa yang diminta.
 4. Voila! Program akan menjalankan perintah (_one at a time_) sesuai dengan apa yang kamu mau.
 
@@ -37,12 +37,12 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
 
 Terdapat tiga file wajib, yakni:
 - `accountmahasiswa.txt`, berisikan daftar akun GitLab mahasiswa.
-- `credentials.sh`, berisikan kredensial akun GitLab kamu **(pastikan kamu telah memiliki akses ke repositori mahasiswa)**.
-- `script.sh`, berisikan program skrip DDP 2.
+- `credentials.sh` (ayau `credentials.bat`), berisikan kredensial akun GitLab kamu **(pastikan kamu telah memiliki akses ke repositori mahasiswa)**.
+- `script.sh` (atau `script.bat`), berisikan program skrip DDP 2.
 
 Tiga folder baru akan dibuat (satu folder harus dibuat dari awal), yakni:
 - `code`, berisikan kode dari repositori mahasiswa.
-- `testcase`, berisikan uji kasus dari tim asisten dosen **(pastikan kamu telah mengunduh uji kasus (testcase) dari tim asisten dosen dan menaruhnya di dalam folder tersebut)**.
+- `testcase`, berisikan uji kasus dari tim asisten dosen **(pastikan kamu telah mengunduh uji kasus _(testcase)_ dari tim asisten dosen dan menaruhnya di dalam folder tersebut)**.
 - `report`, berisikan hasil pemeriksaan Gradle dari setiap mahasiswa.
 
 ## Lisensi
