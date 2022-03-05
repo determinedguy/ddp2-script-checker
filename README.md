@@ -2,7 +2,7 @@
 
 > **LAST REVISION**: `REV03 Sun 6 Mar 2022 01:13:10 WIB`
 
-Sebuah skrip otomatis untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
+Sebuah skrip otomatis untuk _clone_, _pull_, menghapus file kode, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
 Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ (\*.bat) dibuat untuk sistem operasi Windows, sedangkan versi _shell script_ (\*.sh) dibuat untuk sistem operasi *nix.
 
@@ -21,7 +21,7 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
 - Menambah perintah `chmod +x gradle` agar file Gradle bisa dijalankan di macOS.
 
 ### START
-- Membuat skrip yang dapat digunakan untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa.
+- Membuat skrip _shell script_ yang dapat digunakan untuk _clone_, _pull_, menghapus file kode, dan menjalankan Gradle secara otomatis dari repositori mahasiswa.
 
 ## Tata Cara Penggunaan
 
