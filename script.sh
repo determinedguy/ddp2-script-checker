@@ -47,7 +47,7 @@ then
             git pull https://$USERNAME:$PASSWORD@gitlab.com/$line/assignments.git
             cd ../..
         else
-            echo "$(tput setaf 1)ERROR: Directory $line does not exists.$(tput sgr 0)"
+            echo "$(tput setaf 1)ERROR: Directory $line does not exist.$(tput sgr 0)"
         fi
     done
     cd ..
@@ -84,7 +84,7 @@ then
             cd ../..
         else
             echo ""
-            echo "$(tput setaf 1)ERROR: Directory $line does not exists.$(tput sgr 0)"
+            echo "$(tput setaf 1)ERROR: Directory $line does not exist.$(tput sgr 0)"
         fi
     done
 elif [[ $OPT -eq 4 ]]
@@ -99,11 +99,8 @@ then
         done
         echo "Penghapusan sukses."
         echo "Jangan lupa untuk menjalankan cloning kembali!"
-    elif [[ $STATUS == *"N"* || $STATUS == *"n"* ]]
-    then
-        echo "Penghapusan dibatalkan."
     else
-        echo "Respons tidak valid."
+        echo "Penghapusan dibatalkan."
     fi
 else
   echo "Masukan tidak valid."
