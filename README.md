@@ -13,7 +13,7 @@ Saat ini hanya telah teruji di sistem operasi Linux, dengan syarat program Git t
 ## CHANGELOG
 
 ### START
-- Membuat skrip yang dapat digunakan untuk _clone_, _pull_, hapus, dam menjalankan Gradle secara otomatis dari repositori mahasiswa.
+- Membuat skrip yang dapat digunakan untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa.
 
 ## Tata Cara Penggunaan
 
