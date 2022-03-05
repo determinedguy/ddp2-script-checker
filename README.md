@@ -4,14 +4,14 @@
 
 Sebuah skrip otomatis untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
-Program Git wajib terinstal sebelum menjalankan skrip ini. Versi batch script dibuat untuk sistem operasi Windows, sedangkan versi shell script dibuat untuk sistem operasi *nix.
+Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ (\*.bat) dibuat untuk sistem operasi Windows, sedangkan versi _shell script_ (\*.sh) dibuat untuk sistem operasi *nix.
 
 > Copyright (C) 2022 Muhammad Athallah
 
 ## CHANGELOG
 
 ### REV03
-- Mengubah cara pembuatan folder report.
+- Mengubah cara pembuatan folder `report`.
 
 ### REV02
 - Membuat skrip versi _batch script_ untuk Windows.
