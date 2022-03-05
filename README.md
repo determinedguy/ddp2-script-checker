@@ -1,11 +1,11 @@
 # DDP 2 Script Checker
 
-> **LAST REVISION**: `START Sat 5 Mar 2022 12:19:55 WIB`
+> **LAST REVISION**: `REV01 Sat 5 Mar 2022 17:07:07 WIB`
 
 Sebuah skrip otomatis untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
 ```
-Saat ini hanya telah teruji di sistem operasi Linux, dengan syarat program Git telah terinstal.
+Saat ini hanya telah teruji di sistem operasi Linux dan macOS, dengan syarat program Git telah terinstal.
 ```
 
 > Copyright (C) 2022 Muhammad Athallah

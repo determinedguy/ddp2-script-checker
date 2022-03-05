@@ -5,6 +5,7 @@
 # useful, but WITHOUT ANY WARRANTY; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+# REV01 Sat 5 Mar 2022 17:07:07 WIB
 # START Sat 5 Mar 2022 10:17:30 WIB
 
 # Import/source credentials script file
@@ -75,9 +76,11 @@ then
             echo ""
             echo "Testing testcases in $line folder..."
             cd ../../code/$line
+            # UPDATE REV01: Fix for macOS
+            chmod +x gradlew
             # The solution of the bug: https://stackoverflow.com/a/60499489
             # Output the Gradle message while saving it to report file
-            ./gradlew :$PROJECTNAME:test  < /dev/null |& tee ../../report/$line/$PROJECTNAME/output.txt
+            ./gradlew :$PROJECTNAME:test  < /dev/null 2>&1 | tee ../../report/$line/$PROJECTNAME/output.txt
             cd ../..
         else
             echo ""
