@@ -4,7 +4,7 @@
 
 Sebuah skrip otomatis untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
-`Program Git telah terinstal sebelum menjalankan skrip ini. Versi batch script dibuat untuk sistem operasi Windows, sedangkan versi shell script dibuat untuk sistem operasi *nix.`
+Program Git wajib terinstal sebelum menjalankan skrip ini. Versi batch script dibuat untuk sistem operasi Windows, sedangkan versi shell script dibuat untuk sistem operasi *nix.
 
 > Copyright (C) 2022 Muhammad Athallah
 
