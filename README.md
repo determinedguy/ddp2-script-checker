@@ -1,16 +1,20 @@
 # DDP 2 Script Checker
 
-> **LAST REVISION**: `REV01 Sat 5 Mar 2022 17:07:07 WIB`
+> **LAST REVISION**: `REV03 Sun 6 Mar 2022 01:13:10 WIB`
 
 Sebuah skrip otomatis untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
-```
-Saat ini hanya telah teruji di sistem operasi Linux dan macOS, dengan syarat program Git telah terinstal.
-```
+Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ (\*.bat) dibuat untuk sistem operasi Windows, sedangkan versi _shell script_ (\*.sh) dibuat untuk sistem operasi *nix.
 
 > Copyright (C) 2022 Muhammad Athallah
 
 ## CHANGELOG
+
+### REV03
+- Mengubah cara pembuatan folder `report`.
+
+### REV02
+- Membuat skrip versi _batch script_ untuk Windows.
 
 ### REV01
 - Mengubah cara menyimpan keluaran Gradle agar bisa digunakan di macOS.
@@ -25,7 +29,7 @@ Saat ini hanya telah teruji di sistem operasi Linux dan macOS, dengan syarat pro
     ```
     git clone https://github.com/determinedguy/ddp2-script-checker
     ```
-2. Isikan kredensial kamu di file `credentials.sh`.
+2. Isikan kredensial kamu di file `credentials.sh` (atau `credentials.sh`).
 3. Jalankan program dan masukkan masukan sesuai dengan apa yang diminta.
 4. Voila! Program akan menjalankan perintah (_one at a time_) sesuai dengan apa yang kamu mau.
 

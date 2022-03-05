@@ -47,7 +47,7 @@ then
             git pull https://$USERNAME:$PASSWORD@gitlab.com/$line/assignments.git
             cd ../..
         else
-            echo "$(tput setaf 1)ERROR: Directory $line does not exists.$(tput sgr 0)"
+            echo "$(tput setaf 1)ERROR: Directory $line does not exist.$(tput sgr 0)"
         fi
     done
     cd ..
@@ -62,10 +62,10 @@ then
     # Copy testcases to each mahasiswa's folder
     cat accountmahasiswa.txt | while read line
     do
-        # Make report folder
-        mkdir -p report/$line/$PROJECTNAME
         if [ -d code/$line ] 
         then
+            # Make report folder
+            mkdir -p report/$line/$PROJECTNAME
             cd testcase/$TESTCASEFOLDER
             echo ""
             for testcasefile in *
@@ -82,9 +82,10 @@ then
             # Output the Gradle message while saving it to report file
             ./gradlew :$PROJECTNAME:test  < /dev/null 2>&1 | tee ../../report/$line/$PROJECTNAME/output.txt
             cd ../..
+            echo "Done testing testcases in $line folder."
         else
             echo ""
-            echo "$(tput setaf 1)ERROR: Directory $line does not exists.$(tput sgr 0)"
+            echo "$(tput setaf 1)ERROR: Directory $line does not exist.$(tput sgr 0)"
         fi
     done
 elif [[ $OPT -eq 4 ]]
@@ -99,11 +100,8 @@ then
         done
         echo "Penghapusan sukses."
         echo "Jangan lupa untuk menjalankan cloning kembali!"
-    elif [[ $STATUS == *"N"* || $STATUS == *"n"* ]]
-    then
-        echo "Penghapusan dibatalkan."
     else
-        echo "Respons tidak valid."
+        echo "Penghapusan dibatalkan."
     fi
 else
   echo "Masukan tidak valid."
