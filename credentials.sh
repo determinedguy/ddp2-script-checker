@@ -10,4 +10,4 @@
 # Change this into your GitLab username and password!
 # Change '@' with '%40' if you use any!
 USERNAME="[MASUKKAN EMAIL ATAU NAMA USERNAME]"
-PASSWORD="[MASUKKAN PASSWORD]" 
+PASSWORD="[MASUKKAN PASSWORD]"

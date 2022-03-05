@@ -62,10 +62,10 @@ then
     # Copy testcases to each mahasiswa's folder
     cat accountmahasiswa.txt | while read line
     do
-        # Make report folder
-        mkdir -p report/$line/$PROJECTNAME
         if [ -d code/$line ] 
         then
+            # Make report folder
+            mkdir -p report/$line/$PROJECTNAME
             cd testcase/$TESTCASEFOLDER
             echo ""
             for testcasefile in *
@@ -82,6 +82,7 @@ then
             # Output the Gradle message while saving it to report file
             ./gradlew :$PROJECTNAME:test  < /dev/null 2>&1 | tee ../../report/$line/$PROJECTNAME/output.txt
             cd ../..
+            echo "Done testing testcases in $line folder."
         else
             echo ""
             echo "$(tput setaf 1)ERROR: Directory $line does not exist.$(tput sgr 0)"
