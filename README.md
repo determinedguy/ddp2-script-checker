@@ -5,7 +5,7 @@
 Sebuah skrip otomatis untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
 ```
-Saat ini hanya baru teruji di sistem operasi Linux, dengan syarat program Git telah terinstal.
+Saat ini hanya telah teruji di sistem operasi Linux, dengan syarat program Git telah terinstal.
 ```
 
 > Copyright (C) 2022 Muhammad Athallah
