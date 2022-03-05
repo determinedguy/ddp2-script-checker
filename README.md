@@ -12,6 +12,10 @@ Saat ini hanya telah teruji di sistem operasi Linux dan macOS, dengan syarat pro
 
 ## CHANGELOG
 
+### REV01
+- Mengubah cara menyimpan keluaran Gradle agar bisa digunakan di macOS.
+- Menambah perintah `chmod +x gradle` agar file Gradle bisa dijalankan di macOS.
+
 ### START
 - Membuat skrip yang dapat digunakan untuk _clone_, _pull_, hapus, dan menjalankan Gradle secara otomatis dari repositori mahasiswa.
 
