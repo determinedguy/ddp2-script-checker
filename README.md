@@ -1,6 +1,6 @@
 # DDP 2 Script Checker
 
-> **LAST REVISION**: `REV03 Sun 6 Mar 2022 01:13:10 WIB`
+> **LAST REVISION**: `REV04 Sun 6 Mar 2022 13:58:25 WIB`
 
 Sebuah skrip otomatis untuk _clone_, _pull_, menghapus file kode, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
@@ -9,6 +9,9 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
 > Copyright (C) 2022 Muhammad Athallah
 
 ## CHANGELOG
+
+### REV04
+- Menambahkan peringatan untuk menggunakan _double percentage symbol_ pada file `credentials.bat`.
 
 ### REV03
 - Mengubah cara pembuatan folder `report`.
