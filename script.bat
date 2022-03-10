@@ -5,6 +5,8 @@ rem This free document is distributed in the hope that it will be
 rem useful, but WITHOUT ANY WARRANTY; without even the implied
 rem warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+rem REV05 Thu 10 Mar 2022 18:21:25 WIB
+rem REV04 Sun 6 Mar 2022 13:58:25 WIB
 rem REV03 Sun 6 Mar 2022 01:13:10 WIB
 rem REV02 Sun 6 Mar 2022 00:00:00 WIB
 rem REV01 Sat 5 Mar 2022 17:07:07 WIB
@@ -71,7 +73,8 @@ for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
         echo.
         for /r %%j in (*) do (
             echo Copying %%j to %%i folder...
-            copy %%j ..\..\code\%%i\%PROJECTNAME%\src\test\java\assignments\%PROJECTNAME%\%%~nxj
+            rem https://www.fatihacar.com/blog/how-to-copy-only-new-files-and-changed-files-with-xcopy-on-windows/
+            xcopy %%j ..\..\code\%%i\%PROJECTNAME%\src\test\java\assignments\%PROJECTNAME% /i /c /y
         )
         echo.
         echo Testing testcases in %%i folder...

@@ -1,6 +1,6 @@
 # DDP 2 Script Checker
 
-> **LAST REVISION**: `REV04 Sun 6 Mar 2022 13:58:25 WIB`
+> **LAST REVISION**: `REV05 Thu 10 Mar 2022 18:21:25 WIB`
 
 Sebuah skrip otomatis untuk _clone_, _pull_, menghapus file kode, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
 
@@ -9,6 +9,9 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
 > Copyright (C) 2022 Muhammad Athallah
 
 ## CHANGELOG
+
+### REV05
+- Mengganti mekanisme penyalinan file pada Windows dari `copy` dengan `xcopy`.
 
 ### REV04
 - Menambahkan peringatan untuk menggunakan _double percentage symbol_ pada file `credentials.bat`.
@@ -33,6 +36,8 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
     git clone https://github.com/determinedguy/ddp2-script-checker
     ```
 2. Isikan kredensial kamu di file `credentials.sh` (atau `credentials.bat`).
+    - Apabila kata sandimu mengandung simbol atau karakter khusus, harap dikonversi dengan mengacu kepada URL Encoding Format.<br> Kamu dapat membaca [HTML URL Encoding Reference](https://www.w3schools.com/tags/ref_urlencode.asp) sebagai referensi.
+    - Apabila kamu pengguna Windows, kamu harus menambahkan simbol persen (`%`) sebelum mengetikkan simbol atau karakter khusus yang telah dikonversi mengikuti URL Encoding Format.
 3. Jalankan program dan masukkan masukan sesuai dengan apa yang diminta.
 4. Voila! Program akan menjalankan perintah (_one at a time_) sesuai dengan apa yang kamu mau.
 
@@ -40,8 +45,8 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
 
 Terdapat tiga file wajib, yakni:
 - `accountmahasiswa.txt`, berisikan daftar akun GitLab mahasiswa.
-- `credentials.sh` (ayau `credentials.bat`), berisikan kredensial akun GitLab kamu **(pastikan kamu telah memiliki akses ke repositori mahasiswa)**.
-- `script.sh` (atau `script.bat`), berisikan program skrip DDP 2.
+- `credentials.sh` (atau `credentials.bat`), berisikan kredensial akun GitLab kamu **(pastikan kamu telah memiliki akses ke repositori mahasiswa)**.
+- `script.sh` (atau `script.bat`), berisikan program skrip DDP 2 Checker.
 
 Tiga folder baru akan dibuat (satu folder harus dibuat dari awal), yakni:
 - `code`, berisikan kode dari repositori mahasiswa.
