@@ -105,7 +105,7 @@ then
                 mkdir -p report/$line/$PROJECTNAME
                 # Make testcase folder for in-out from TA
                 mkdir -p code/$line/$PROJECTNAME/testcases/in-out-asdos
-                mkdir -p code/$line/$PROJECTNAME/testcases/out-expected-asdos
+                mkdir -p code/$line/$PROJECTNAME/testcases/out-mahasiswa-asdos
                 mkdir -p code/$line/$PROJECTNAME/testcases/diff
                 cd testcase/$TESTCASEFOLDER
                 echo ""
@@ -126,9 +126,9 @@ then
                 # Run main class, input the testcase, and store the output to the output file
                 for (( i=1; i<=$TESTCASEAMT; i++ ))
                 do
-                    ./gradlew -q :$PROJECTNAME:run < $PROJECTNAME/testcases/in-out-asdos/in$i.txt | tee $PROJECTNAME/testcases/out-expected-asdos/out$i.txt  >> /dev/null
+                    ./gradlew -q :$PROJECTNAME:run < $PROJECTNAME/testcases/in-out-asdos/in$i.txt | tee $PROJECTNAME/testcases/out-mahasiswa-asdos/out$i.txt  >> /dev/null
                     echo "Perbedaan yang ada pada uji kasus ke-$i:"
-                    diff -s --strip-trailing-cr $PROJECTNAME/testcases/in-out-asdos/out$i.txt $PROJECTNAME/testcases/out-expected-asdos/out$i.txt | tee $PROJECTNAME/testcases/diff/out$i.txt
+                    diff -s --strip-trailing-cr $PROJECTNAME/testcases/out-mahasiswa-asdos/out$i.txt $PROJECTNAME/testcases/in-out-asdos/out$i.txt | tee $PROJECTNAME/testcases/diff/out$i.txt
                     echo ""
                 done
                 cd ../..
