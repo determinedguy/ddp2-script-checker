@@ -1,4 +1,5 @@
 @echo off
+setlocal enableextensions enabledelayedexpansion
 rem Copyright (C) 2022 Muhammad Athallah
 
 rem This free document is distributed in the hope that it will be
@@ -61,37 +62,94 @@ goto endprogram
 echo Pastikan folder uji kasus dari tim asisten dosen berada di folder 'testcase'!
 rem Just in case the folder is not created yet!
 if not exist "testcase\" mkdir testcase
+set /p MODE=Masukkan jenis uji kasus (Masukkan 1 untuk Java-based testcase, 2 untuk text-based testcase): 
 set /p PROJECTNAME=Masukkan nama folder tugas pemrograman (contohnya 'assignment1'): 
 set /p TESTCASEFOLDER=Masukkan nama folder uji kasus (jangan gunakan spasi!): 
-echo Copying new testcases to each mahasiswa's repository folder...
-rem Copy testcases to each mahasiswa's folder
-for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
-    if exist "code\%%i\" (
-        rem Make report folder
-        if not exist "report\%%i\%PROJECTNAME%" mkdir report\%%i\%PROJECTNAME%
-        cd testcase\%TESTCASEFOLDER%
-        echo.
-        for /r %%j in (*) do (
-            echo Copying %%j to %%i folder...
-            rem https://www.fatihacar.com/blog/how-to-copy-only-new-files-and-changed-files-with-xcopy-on-windows/
-            xcopy %%j ..\..\code\%%i\%PROJECTNAME%\src\test\java\assignments\%PROJECTNAME% /i /c /y
-        )
-        echo.
-        echo Testing testcases in %%i folder...
-        cd ..\..\code\%%i
-        if exist "..\..\report\%%i\%PROJECTNAME%\output.txt" del /f "..\..\report\%%i\%PROJECTNAME%\output.txt"
-        for /f "delims=" %%k in ('call gradlew.bat :%PROJECTNAME%:test') do (
-            echo %%k
-            echo %%k >> ..\..\report\%%i\%PROJECTNAME%\output.txt
-        )
-        cd ..\..
-        echo Done testing testcases in %%i folder.
-    ) else (
-        echo.
-        echo ERROR: Directory %%i does not exist.
-    )
-)
+
+IF /i "%MODE%"=="1" goto mode1
+IF /i "%MODE%"=="2" goto mode2
+
+echo Masukan mode jenis uji kasus tidak valid.
 goto endprogram
+
+    :mode1
+    echo Copying new testcases to each mahasiswa's repository folder...
+    rem Copy testcases to each mahasiswa's folder
+    for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
+        if exist "code\%%i\" (
+            rem Make report folder
+            if not exist "report\%%i\%PROJECTNAME%" mkdir report\%%i\%PROJECTNAME%
+            cd testcase\%TESTCASEFOLDER%
+            echo.
+            for /r %%j in (*) do (
+                echo Copying %%j to %%i folder...
+                rem https://www.fatihacar.com/blog/how-to-copy-only-new-files-and-changed-files-with-xcopy-on-windows/
+                xcopy %%j ..\..\code\%%i\%PROJECTNAME%\src\test\java\assignments\%PROJECTNAME% /i /c /y
+            )
+            echo.
+            echo Testing testcases in %%i folder...
+            cd ..\..\code\%%i
+            if exist "..\..\report\%%i\%PROJECTNAME%\output.txt" del /f "..\..\report\%%i\%PROJECTNAME%\output.txt"
+            for /f "delims=" %%k in ('call gradlew.bat :%PROJECTNAME%:test') do (
+                echo %%k
+                echo %%k >> ..\..\report\%%i\%PROJECTNAME%\output.txt
+            )
+            cd ..\..
+            echo Done testing testcases in %%i folder.
+        ) else (
+            echo.
+            echo ERROR: Directory %%i does not exist.
+        )
+    )
+    goto endprogram
+
+    :mode2
+    echo Copying new testcases to each mahasiswa's repository folder...
+    rem Copy testcases to each mahasiswa's folder
+    for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
+        if exist "code\%%i\" (
+            rem Make report folder
+            if not exist "report\%%i\%PROJECTNAME%" mkdir report\%%i\%PROJECTNAME%
+            rem Get current directory
+            set PWD=%cd%
+            rem Remove generated directory if exist
+            if exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\in-out-asdos"
+            if exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos"
+            if exist "code\%%i\%PROJECTNAME%\testcases\diff" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\diff"
+            rem Make testcase folder for in-out from TA
+            if not exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos" mkdir code\%%i\%PROJECTNAME%\testcases\in-out-asdos
+            if not exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos" mkdir code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos
+            if not exist "code\%%i\%PROJECTNAME%\testcases\diff" mkdir code\%%i\%PROJECTNAME%\testcases\diff
+            cd testcase\%TESTCASEFOLDER%
+            echo.
+            for /r %%j in (*) do (
+                echo Copying %%j to %%i folder...
+                rem https://www.fatihacar.com/blog/how-to-copy-only-new-files-and-changed-files-with-xcopy-on-windows/
+                xcopy %%j ..\..\code\%%i\%PROJECTNAME%\testcases\in-out-asdos /i /c /y
+            )
+            echo.
+            echo Testing testcases in %%i folder...
+            cd ..\..\code\%%i
+            rem Count testcase file
+            set TESTCASEAMTRAW=0
+            for %%A in ("%PROJECTNAME%\testcases\in-out-asdos\*.txt") do SET/A TESTCASEAMTRAW+=1
+            set /A TESTCASEAMT=%TESTCASEAMTRAW%/2
+            echo %TESTCASEAMT%
+            rem Run main class, input the testcase, and store the output to the output file
+            for /l %%j in (1, 1, %TESTCASEAMT%) do (
+                type %PROJECTNAME%\testcases\in-out-asdos\in%%j.txt | gradlew.bat -q :%PROJECTNAME%:test > %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt
+                echo Perbedaan yang ada pada uji kasus ke-%%j:
+	            fc %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt %PROJECTNAME%\testcases\in-out-asdos\out%%j.txt > %PROJECTNAME%\testcases\diff\out%%j.txt
+                echo.
+            )
+            cd ..\..
+            echo Done testing testcases in %%i folder.
+        ) else (
+            echo.
+            echo ERROR: Directory %%i does not exist.
+        )
+    )
+    goto endprogram
 
 :option4
 set /p STATUS=Apakah kamu yakin? (Y/N) 
