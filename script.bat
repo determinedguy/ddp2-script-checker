@@ -6,6 +6,7 @@ rem This free document is distributed in the hope that it will be
 rem useful, but WITHOUT ANY WARRANTY; without even the implied
 rem warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+rem REV07 Sun 10 Apr 2022 20:49:00 WIB
 rem REV05 Thu 10 Mar 2022 18:21:25 WIB
 rem REV04 Sun 6 Mar 2022 13:58:25 WIB
 rem REV03 Sun 6 Mar 2022 01:13:10 WIB
@@ -78,7 +79,7 @@ goto endprogram
     for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
         if exist "code\%%i\" (
             rem Make report folder
-            if not exist "report\%%i\%PROJECTNAME%\" mkdir report\%%i\%PROJECTNAME%
+            if not exist "report\%%i\%PROJECTNAME%" mkdir report\%%i\%PROJECTNAME%
             cd testcase\%TESTCASEFOLDER%
             echo.
             for /r %%j in (*) do (
@@ -108,18 +109,17 @@ goto endprogram
     rem Copy testcases to each mahasiswa's folder
     for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
         if exist "code\%%i\" (
-            rem Make report folder
-            if not exist "report\%%i\%PROJECTNAME%\" mkdir report\%%i\%PROJECTNAME%
             rem Get current directory
             set PWD=%cd%
             rem Remove generated directory if exist
-            if exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\in-out-asdos\"
-            if exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos\"
-            if exist "code\%%i\%PROJECTNAME%\testcases\diff\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\diff\"
+            if exist "report\%%i\%PROJECTNAME%\" rd /s /q "%PWD%\report\%%i\%PROJECTNAME%"
+            if exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\in-out-asdos"
+            if exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos"
+            rem Make report folder
+            if not exist "report\%%i\%PROJECTNAME%\" mkdir report\%%i\%PROJECTNAME%
             rem Make testcase folder for in-out from TA
             if not exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos\" mkdir code\%%i\%PROJECTNAME%\testcases\in-out-asdos
             if not exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos\" mkdir code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos
-            if not exist "code\%%i\%PROJECTNAME%\testcases\diff\" mkdir code\%%i\%PROJECTNAME%\testcases\diff
             cd testcase\%TESTCASEFOLDER%
             echo.
             for /r %%j in (*) do (
@@ -131,15 +131,15 @@ goto endprogram
             echo Testing testcases in %%i folder...
             cd ..\..\code\%%i
             rem Count testcase file
-            set TESTCASEAMTRAW=0
-            for %%A in ("%PROJECTNAME%\testcases\in-out-asdos\*.txt") do set /A TESTCASEAMTRAW+=1
-            set /A TESTCASEAMT=%TESTCASEAMTRAW%/2
+            set /a TESTCASEAMTRAW=0
+			for /r %PROJECTNAME%\testcases\in-out-asdos %%X in (*.txt) do set /a TESTCASEAMTRAW+=1
+			set /a TESTCASEAMT=!TESTCASEAMTRAW!/2
             rem Run main class, input the testcase, and store the output to the output file
-            for /l %%j in (1, 1, !TESTCASEAMT!) do (
+			for /l %%j in (1, 1, !TESTCASEAMT!) do (
                 type %PROJECTNAME%\testcases\in-out-asdos\in%%j.txt | gradlew.bat -q :%PROJECTNAME%:run > %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt
-                echo Perbedaan yang ada pada uji kasus ke-%%j:
-	            fc %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt %PROJECTNAME%\testcases\in-out-asdos\out%%j.txt > %PROJECTNAME%\testcases\diff\out%%j.txt
-                echo.
+				echo Perbedaan yang ada pada uji kasus ke-%%j:
+				fc /w %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt %PROJECTNAME%\testcases\in-out-asdos\out%%j.txt
+				fc /w %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt %PROJECTNAME%\testcases\in-out-asdos\out%%j.txt > ..\..\report\%%i\%PROJECTNAME%\out%%j.txt
             )
             cd ..\..
             echo Done testing testcases in %%i folder.

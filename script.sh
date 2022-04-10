@@ -5,6 +5,7 @@
 # useful, but WITHOUT ANY WARRANTY; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+# REV07 Sun 10 Apr 2022 20:49:00 WIB
 # REV06 Sun 10 Apr 2022 00:00:00 WIB
 # REV01 Sat 5 Mar 2022 17:07:07 WIB
 # START Sat 5 Mar 2022 10:17:30 WIB
@@ -106,7 +107,6 @@ then
                 # Make testcase folder for in-out from TA
                 mkdir -p code/$line/$PROJECTNAME/testcases/in-out-asdos
                 mkdir -p code/$line/$PROJECTNAME/testcases/out-mahasiswa-asdos
-                mkdir -p code/$line/$PROJECTNAME/testcases/diff
                 cd testcase/$TESTCASEFOLDER
                 echo ""
                 for testcasefile in *
@@ -128,7 +128,7 @@ then
                 do
                     ./gradlew -q :$PROJECTNAME:run < $PROJECTNAME/testcases/in-out-asdos/in$i.txt | tee $PROJECTNAME/testcases/out-mahasiswa-asdos/out$i.txt  >> /dev/null
                     echo "Perbedaan yang ada pada uji kasus ke-$i:"
-                    diff -s --strip-trailing-cr $PROJECTNAME/testcases/out-mahasiswa-asdos/out$i.txt $PROJECTNAME/testcases/in-out-asdos/out$i.txt | tee $PROJECTNAME/testcases/diff/out$i.txt
+                    diff -s --strip-trailing-cr $PROJECTNAME/testcases/out-mahasiswa-asdos/out$i.txt $PROJECTNAME/testcases/in-out-asdos/out$i.txt | tee ../../report/$line/$PROJECTNAME/out$i.txt
                     echo ""
                 done
                 cd ../..
