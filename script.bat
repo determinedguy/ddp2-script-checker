@@ -137,7 +137,7 @@ goto endprogram
             echo %TESTCASEAMT%
             rem Run main class, input the testcase, and store the output to the output file
             for /l %%j in (1, 1, %TESTCASEAMT%) do (
-                type %PROJECTNAME%\testcases\in-out-asdos\in%%j.txt | gradlew.bat -q :%PROJECTNAME%:test > %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt
+                type %PROJECTNAME%\testcases\in-out-asdos\in%%j.txt | gradlew.bat -q :%PROJECTNAME%:run > %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt
                 echo Perbedaan yang ada pada uji kasus ke-%%j:
 	            fc %PROJECTNAME%\testcases\out-mahasiswa-asdos\out%%j.txt %PROJECTNAME%\testcases\in-out-asdos\out%%j.txt > %PROJECTNAME%\testcases\diff\out%%j.txt
                 echo.
