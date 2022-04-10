@@ -78,7 +78,7 @@ goto endprogram
     for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
         if exist "code\%%i\" (
             rem Make report folder
-            if not exist "report\%%i\%PROJECTNAME%" mkdir report\%%i\%PROJECTNAME%
+            if not exist "report\%%i\%PROJECTNAME%\" mkdir report\%%i\%PROJECTNAME%
             cd testcase\%TESTCASEFOLDER%
             echo.
             for /r %%j in (*) do (
@@ -109,17 +109,17 @@ goto endprogram
     for /F "usebackq tokens=*" %%i in ("accountmahasiswa.txt") do (
         if exist "code\%%i\" (
             rem Make report folder
-            if not exist "report\%%i\%PROJECTNAME%" mkdir report\%%i\%PROJECTNAME%
+            if not exist "report\%%i\%PROJECTNAME%\" mkdir report\%%i\%PROJECTNAME%
             rem Get current directory
             set PWD=%cd%
             rem Remove generated directory if exist
-            if exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\in-out-asdos"
-            if exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos"
-            if exist "code\%%i\%PROJECTNAME%\testcases\diff" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\diff"
+            if exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\in-out-asdos\"
+            if exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos\"
+            if exist "code\%%i\%PROJECTNAME%\testcases\diff\" rd /s /q "%PWD%\code\%%i\%PROJECTNAME%\testcases\diff\"
             rem Make testcase folder for in-out from TA
-            if not exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos" mkdir code\%%i\%PROJECTNAME%\testcases\in-out-asdos
-            if not exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos" mkdir code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos
-            if not exist "code\%%i\%PROJECTNAME%\testcases\diff" mkdir code\%%i\%PROJECTNAME%\testcases\diff
+            if not exist "code\%%i\%PROJECTNAME%\testcases\in-out-asdos\" mkdir code\%%i\%PROJECTNAME%\testcases\in-out-asdos
+            if not exist "code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos\" mkdir code\%%i\%PROJECTNAME%\testcases\out-mahasiswa-asdos
+            if not exist "code\%%i\%PROJECTNAME%\testcases\diff\" mkdir code\%%i\%PROJECTNAME%\testcases\diff
             cd testcase\%TESTCASEFOLDER%
             echo.
             for /r %%j in (*) do (
