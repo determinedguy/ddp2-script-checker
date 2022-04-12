@@ -5,6 +5,7 @@
 # useful, but WITHOUT ANY WARRANTY; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+# REV08 Tue 12 Apr 2022 12:53:45 WIB
 # START Tue 12 Apr 2022 12:23:13 WIB
 
 echo "$(tput setaf 3)Pastikan file uji kasus berada di folder tc pada parent directory bersama dengan folder kode mahasiswa dan skrip ini.$(tput sgr 0)"
