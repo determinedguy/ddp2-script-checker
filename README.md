@@ -1,14 +1,19 @@
 # DDP 2 Script Checker
 
-> **LAST REVISION**: `REV07 Sun 10 Apr 2022 20:49:00 WIB`
+> **LAST REVISION**: `REV08 Tue 12 Apr 2022 12:53:45 WIB`
 
-Sebuah skrip otomatis untuk _clone_, _pull_, menghapus file kode, dan menjalankan Gradle secara otomatis dari repositori mahasiswa Dasar-Dasar Pemrograman 2 (DDP 2).
+Sebuah kumpulan skrip otomatis untuk membantu pekerjaan asisten dosen Dasar-Dasar Pemrograman 2 (DDP 2) dalam melakukan:
+- Pengecekan perbedaan uji kasus untuk lab dan tugas pemrograman mahasiswa.
+- _Clone_, _pull_, penghapusan file kode, dan eksekui Gradle secara otomatis dari repositori tugas pemrograman mahasiswa.
 
 Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ (\*.bat) dibuat untuk sistem operasi Windows, sedangkan versi _shell script_ (\*.sh) dibuat untuk sistem operasi *nix.
 
 > Copyright (C) 2022 Muhammad Athallah
 
 ## CHANGELOG
+
+### REV08
+- Membuat skrip baru (_shell script_) untuk membantu penilaian lab dengan uji kasus berbasis teks (_text-based testcases_).
 
 ### REV07
 - Menambah dukungan untuk uji kasus berbasis teks (_text-based testcases_) pada versi _batch script_.
@@ -36,19 +41,28 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
 ### START
 - Membuat skrip _shell script_ yang dapat digunakan untuk _clone_, _pull_, menghapus file kode, dan menjalankan Gradle secara otomatis dari repositori mahasiswa.
 
-## Tata Cara Penggunaan
+## Cara Mengunduh
+_Clone_ repositori ini dengan menggunakan:<br>
+```
+git clone https://github.com/determinedguy/ddp2-script-checker
+```
 
-1. _Clone_ repositori ini dengan menggunakan:<br>
-    ```
-    git clone https://github.com/determinedguy/ddp2-script-checker
-    ```
-2. Isikan kredensial kamu di file `credentials.sh` (atau `credentials.bat`).
-    - Apabila kata sandimu mengandung simbol atau karakter khusus, harap dikonversi dengan mengacu kepada URL Encoding Format.<br> Kamu dapat membaca [HTML URL Encoding Reference](https://www.w3schools.com/tags/ref_urlencode.asp) sebagai referensi.
-    - Apabila kamu pengguna Windows, kamu harus menambahkan simbol persen (`%`) sebelum mengetikkan simbol atau karakter khusus yang telah dikonversi mengikuti URL Encoding Format.
+## Tata Cara Penggunaan (Skrip Lab)
+
+1. Buatlah sebuah folder yang berisi folder uji kasus (input dan output berada dalam satu folder) dan folder kode masing-masing mahasiswa dengan **kode asisten dosen** yang sesuai.
+2. Salin skrip ke dalam folder tersebut.
 3. Jalankan program dan masukkan masukan sesuai dengan apa yang diminta.
 4. Voila! Program akan menjalankan perintah (_one at a time_) sesuai dengan apa yang kamu mau.
 
-## Struktur Direktori
+## Tata Cara Penggunaan (Skrip Tugas Pemrograman)
+
+1. Isikan kredensial kamu di file `credentials.sh` (atau `credentials.bat`).
+    - Apabila kata sandimu mengandung simbol atau karakter khusus, harap dikonversi dengan mengacu kepada URL Encoding Format.<br> Kamu dapat membaca [HTML URL Encoding Reference](https://www.w3schools.com/tags/ref_urlencode.asp) sebagai referensi.
+    - Apabila kamu pengguna Windows, kamu harus menambahkan simbol persen (`%`) sebelum mengetikkan simbol atau karakter khusus yang telah dikonversi mengikuti URL Encoding Format.
+2. Jalankan program dan masukkan masukan sesuai dengan apa yang diminta.
+3. Voila! Program akan menjalankan perintah (_one at a time_) sesuai dengan apa yang kamu mau.
+
+## Struktur Direktori (Skrip Tugas Pemrograman)
 
 Terdapat tiga file wajib, yakni:
 - `accountmahasiswa.txt`, berisikan daftar akun GitLab mahasiswa.
