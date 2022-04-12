@@ -1,6 +1,6 @@
 # DDP 2 Script Checker
 
-> **LAST REVISION**: `REV08 Tue 12 Apr 2022 12:53:45 WIB`
+> **LAST REVISION**: `REV09 Tue 12 Apr 2022 14:03:32 WIB`
 
 Sebuah kumpulan skrip otomatis untuk membantu pekerjaan asisten dosen Dasar-Dasar Pemrograman 2 (DDP 2) dalam melakukan:
 - Pengecekan perbedaan uji kasus untuk lab dan tugas pemrograman mahasiswa.
@@ -11,6 +11,9 @@ Program Git wajib terinstal sebelum menjalankan skrip ini. Versi _batch script_ 
 > Copyright (C) 2022 Muhammad Athallah
 
 ## CHANGELOG
+
+### REV09
+- Membuat skrip baru (_batch script_) untuk membantu penilaian lab dengan uji kasus berbasis teks (_text-based testcases_).
 
 ### REV08
 - Membuat skrip baru (_shell script_) untuk membantu penilaian lab dengan uji kasus berbasis teks (_text-based testcases_).
