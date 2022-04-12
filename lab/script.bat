@@ -23,9 +23,9 @@ rem Get current directory
 set PWD=%cd%
 
 rem For loop each student's directory
-for /d %%i in (%PWD%\%ASDOSCODE%*\) do (
-    echo Grading %%i...
-    cd "%%i"
+for /f "delims=" %%i in ('dir /ad /b /s %ASDOSCODE%*') do (
+    echo Grading %%~nxi...
+    cd %%~nxi
 
     echo Compiling files...
     javac *.java
@@ -38,14 +38,12 @@ for /d %%i in (%PWD%\%ASDOSCODE%*\) do (
         echo Checking test case #%%j...
         type ..\tc\in%%j.txt | java %MAINCLASS% > out\out%%j.txt
         fc /w out\out%%j.txt ..\tc\out%%j.txt
-        fc /w out\out%%j.txt ..\tc\out%%j.txt > report\testcase$i.txt
+        fc /w out\out%%j.txt ..\tc\out%%j.txt > report\testcase%%j.txt
     )
 
-    echo Done grading %%i.
+    echo Done grading %%~nxi.
     echo.
 
     cd ..
 )
-echo Press any key to continue . . . 
 pause
-echo.
