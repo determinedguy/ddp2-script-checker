@@ -167,3 +167,4 @@ goto endprogram
 :endprogram
 echo.
 echo Terima kasih telah menggunakan skrip ini! Selamat mencari cuan.
+pause

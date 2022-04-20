@@ -162,3 +162,4 @@ fi
 
 echo ""
 echo "Terima kasih telah menggunakan skrip ini! $(tput setaf 2)Selamat mencari cuan~$(tput sgr 0)"
+read -rsn1 -p"Press any key to continue";echo
