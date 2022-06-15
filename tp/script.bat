@@ -85,7 +85,7 @@ goto endprogram
             for /r %%j in (*) do (
                 echo Copying %%j to %%i folder...
                 rem https://www.fatihacar.com/blog/how-to-copy-only-new-files-and-changed-files-with-xcopy-on-windows/
-                xcopy %%j ..\..\code\%%i\%PROJECTNAME%\src\test\java\assignments\%PROJECTNAME% /i /c /y
+                xcopy "%%j" ..\..\code\%%i\%PROJECTNAME%\src\test\java\assignments\%PROJECTNAME% /i /c /y
             )
             echo.
             echo Testing testcases in %%i folder...
@@ -125,7 +125,7 @@ goto endprogram
             for /r %%j in (*) do (
                 echo Copying %%j to %%i folder...
                 rem https://www.fatihacar.com/blog/how-to-copy-only-new-files-and-changed-files-with-xcopy-on-windows/
-                xcopy %%j ..\..\code\%%i\%PROJECTNAME%\testcases\in-out-asdos /i /c /y
+                xcopy "%%j" ..\..\code\%%i\%PROJECTNAME%\testcases\in-out-asdos /i /c /y
             )
             echo.
             echo Testing testcases in %%i folder...
